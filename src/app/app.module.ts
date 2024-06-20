@@ -7,6 +7,8 @@ import { PageComponent } from './components/page/page.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FormTaskComponent } from './components/form-task/form-task.component';
 import { ListTaskComponent } from './components/list-task/list-task.component';
+import { HttpClientModule } from '@angular/common/http';
+import { PaginatorComponent } from './components/paginator/paginator.component';
 
 @NgModule({
   declarations: [
@@ -14,11 +16,13 @@ import { ListTaskComponent } from './components/list-task/list-task.component';
     PageComponent,
     HeaderComponent,
     FormTaskComponent,
-    ListTaskComponent
+    ListTaskComponent,
+    PaginatorComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

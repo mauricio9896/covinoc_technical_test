@@ -52,10 +52,10 @@
 
 .list-task table th {
   color: var(--mi-color);
-  font-size: 16px;
-  letter-spacing: 0.62px;
+  font-size: 14px;
   border-bottom: 1px solid #00000029;
   opacity: 0.6;
+  font-weight: bold;
   text-align: center;
 }
 

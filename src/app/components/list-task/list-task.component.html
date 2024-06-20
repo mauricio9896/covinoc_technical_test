@@ -24,9 +24,9 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let task of [ 1, 2, 3, 4, 5, 6]">
-          <td>{{task}}</td>
-          <td> Mi tarea {{task}}</td>
+        <tr *ngFor="let task of paginatedTask">
+          <td>{{task.id}}</td>
+          <td>{{ task.title}}</td>
           <td>
             <input type="checkbox">
           </td>
@@ -39,5 +39,11 @@
   </div>
 
   <div class="footer">
+    <app-paginator
+    [pageSize]="pageSize"
+    [currentPage]="currentPage"
+    [totalItems]="tasks.length"
+    (pageChanged)="onPageChanged($event)">
+  </app-paginator>
   </div>
 </div>
