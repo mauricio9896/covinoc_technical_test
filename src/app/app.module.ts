@@ -9,6 +9,7 @@ import { FormTaskComponent } from './components/form-task/form-task.component';
 import { ListTaskComponent } from './components/list-task/list-task.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PaginatorComponent } from './components/paginator/paginator.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,9 @@ import { PaginatorComponent } from './components/paginator/paginator.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -4,17 +4,21 @@
     <span>Nueva tarea</span>
   </div>
 
-  <div class="form-task">
+  <form class="form-task" [formGroup]="taskForm">
     <div class="input-task">
       <label for="">Título</label>
-      <input type="text" placeholder="Ingrese título">
+      <input type="text" placeholder="Ingrese título" formControlName="title">
     </div>
 
     <div class="input-check">
       <label for="">Tarea completada</label>
-      <input type="checkbox">
+      <input type="checkbox" formControlName="state">
     </div>
 
-    <button> <i class="fa-solid fa-plus"></i> GUARDAR TAREA</button>
-  </div>
+    <button (click)="submmitTask()">
+      <i class="fa-solid fa-plus" *ngIf="!loading"></i>
+      <i class="fas fa-circle-notch fa-spin" *ngIf="loading"></i>
+      GUARDAR TAREA
+    </button>
+  </form>
 </div>

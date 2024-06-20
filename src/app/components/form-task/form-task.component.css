@@ -55,6 +55,7 @@
 }
 
 .input-task input:focus {
+  color: white;
   border-bottom: 2px solid white;
   outline: none;
 }
