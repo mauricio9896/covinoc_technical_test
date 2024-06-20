@@ -21,7 +21,7 @@
 
 .form-task {
   display: flex;
-  align-items: end;
+  align-items: flex-end;
   justify-content: space-between;
   padding-left: 100px;
   padding-right: 100px;

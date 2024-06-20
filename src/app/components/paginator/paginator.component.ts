@@ -20,7 +20,6 @@ export class PaginatorComponent {
     return new Array(this.totalPages);
   }
 
-
   constructor() { }
 
   onPageChange(page: number) {
