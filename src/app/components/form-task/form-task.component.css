@@ -1,0 +1,14 @@
+.container {
+  height: 140px;
+  background: #01ceb6 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #00000029;
+  opacity: 1;
+}
+
+.header span {
+  text-align: left;
+  font: normal normal bold 20px/24px Roboto;
+  letter-spacing: 0.62px;
+  color: #ffffffde;
+  opacity: 1;
+}
