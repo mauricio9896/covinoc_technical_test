@@ -1,1 +1,43 @@
-<p>list-task works!</p>
+<div class="container">
+  <div class="header">
+    <div class="title">
+      <i class="fa-solid fa-list-check"></i>
+      <span>Lista de tareas</span>
+    </div>
+
+    <div class="search">
+      <input type="text" placeholder="Buscar">
+      <span class="input-icon">
+        <i class="fas fa-search"></i>
+      </span>
+    </div>
+  </div>
+
+  <div class="list-task">
+    <table>
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Mis tareas</th>
+          <th>Completada</th>
+          <th>Borrar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let task of [ 1, 2, 3, 4, 5, 6]">
+          <td>{{task}}</td>
+          <td> Mi tarea {{task}}</td>
+          <td>
+            <input type="checkbox">
+          </td>
+          <td>
+            <i class="fa-regular fa-trash-can"></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="footer">
+  </div>
+</div>

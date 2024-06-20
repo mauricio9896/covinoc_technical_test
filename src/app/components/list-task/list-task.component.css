@@ -1,0 +1,75 @@
+.container{
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+.header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0px;
+}
+
+.header .title {
+  color: var(--mi-color);
+  font-size: 20px;
+  i{
+    margin-right: 15px;
+  }
+}
+
+.search {
+  position: relative;
+}
+
+.search input[type="text"]  {
+  padding: 8px 20px;
+  border: 1px solid #0EC4C4;
+  border-radius: 20px;
+  width: 300px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  color: var(--mi-color);
+}
+
+.search input:focus {
+  outline: 1px solid #0EC4C4;
+}
+
+.search .input-icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  color: var(--mi-color);
+}
+
+.list-task table {
+  width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 1.95px 2.6px;
+  padding: 10px 30px;
+
+}
+
+.list-task table th {
+  color: var(--mi-color);
+  font-size: 16px;
+  letter-spacing: 0.62px;
+  border-bottom: 1px solid #00000029;
+  opacity: 0.6;
+  text-align: center;
+}
+
+.list-task table td {
+  font-weight: lighter;
+  border-bottom: 1px solid #00000029;
+  opacity: 0.6;
+  font-size: 14px;
+  text-align: center;
+  padding: 5px;
+}
+
+.list-task table td i {
+  color: red;
+  cursor: pointer;
+}
+
