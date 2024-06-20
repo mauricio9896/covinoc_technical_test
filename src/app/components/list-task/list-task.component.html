@@ -6,7 +6,7 @@
     </div>
 
     <div class="search">
-      <input type="text" placeholder="Buscar">
+      <input type="text" placeholder="Buscar" [(ngModel)]="searchValue">
       <span class="input-icon">
         <i class="fas fa-search"></i>
       </span>
@@ -24,7 +24,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let task of paginatedTask">
+        <tr *ngFor="let task of tasks | filterTask: searchValue: currentPage">
           <td>{{task.id}}</td>
           <td class="title" [ngClass]="{'actived' : task.state }" >{{ task.title}}</td>
           <td>
@@ -39,7 +39,10 @@
   </div>
 
   <div class="footer">
-    <app-paginator [pageSize]="pageSize" [currentPage]="currentPage" [totalItems]="tasks.length"
+    <app-paginator
+      [pageSize]="pageSize"
+      [currentPage]="currentPage"
+      [totalItems]="tasks.length"
       (pageChanged)="onPageChanged($event)">
     </app-paginator>
   </div>

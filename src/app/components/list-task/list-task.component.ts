@@ -11,11 +11,7 @@ export class ListTaskComponent implements OnInit {
   public tasks: taskModel[] = [];
   public pageSize: number = 5;
   public currentPage: number = 1;
-
-  get paginatedTask() {
-    const startIndex = (this.currentPage - 1) * this.pageSize;
-    return this.tasks.slice(startIndex, startIndex + this.pageSize);
-  }
+  public searchValue: string = '';
 
   constructor(private taskService: TaskService) {}
 
@@ -29,7 +25,6 @@ export class ListTaskComponent implements OnInit {
   getTasks() {
     this.taskService.getTask().subscribe((data) => {
       this.tasks = data;
-      console.log('data :>> ', data);
     });
   }
 
@@ -41,8 +36,10 @@ export class ListTaskComponent implements OnInit {
     this.taskService.deleteTask(id).subscribe((res) => {
       if (res) {
         this.taskService.successAlert('Tarea eliminada con éxito!');
-      }else{
-        return this.taskService.errorAlert('Hubo un error al aliminar la tarea!');
+      } else {
+        return this.taskService.errorAlert(
+          'Hubo un error al aliminar la tarea!'
+        );
       }
     });
   }

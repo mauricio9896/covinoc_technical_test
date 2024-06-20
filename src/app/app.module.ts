@@ -10,6 +10,7 @@ import { ListTaskComponent } from './components/list-task/list-task.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PaginatorComponent } from './components/paginator/paginator.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SearchTaskPipe } from './pipes/search-task.pipe';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HeaderComponent,
     FormTaskComponent,
     ListTaskComponent,
-    PaginatorComponent
+    PaginatorComponent,
+    SearchTaskPipe
   ],
   imports: [
     BrowserModule,

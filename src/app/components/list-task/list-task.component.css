@@ -23,7 +23,7 @@
 }
 
 .search input[type="text"]  {
-  padding: 8px 20px;
+  padding: 8px 40px 8px 20px;
   border: 1px solid #0EC4C4;
   border-radius: 20px;
   width: 300px;
