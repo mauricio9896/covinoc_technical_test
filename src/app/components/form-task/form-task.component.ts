@@ -25,7 +25,10 @@ export class FormTaskComponent {
       this.loading = false;
       if (res) {
         this.taskService.successAlert('Tarea creada con éxito!');
-        this.taskForm.reset();
+        this.taskForm.patchValue({
+          title: null,
+          state: false,
+        });
       }else{
         return this.taskService.errorAlert('Hubo un error al crear la tarea!');
       }
