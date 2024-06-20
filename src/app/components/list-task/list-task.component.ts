@@ -5,10 +5,9 @@ import { TaskService } from 'src/app/services/task.service';
 @Component({
   selector: 'app-list-task',
   templateUrl: './list-task.component.html',
-  styleUrls: ['./list-task.component.css']
+  styleUrls: ['./list-task.component.css'],
 })
 export class ListTaskComponent implements OnInit {
-
   public tasks: taskModel[] = [];
   public pageSize: number = 5;
   public currentPage: number = 1;
@@ -18,15 +17,22 @@ export class ListTaskComponent implements OnInit {
     return this.tasks.slice(startIndex, startIndex + this.pageSize);
   }
 
-  constructor( private taskService : TaskService) { }
-
+  constructor(private taskService: TaskService) {}
 
   ngOnInit(): void {
-    this.taskService.getTask().subscribe((data) => {
-      this.tasks = data;
+    this.getTasks();
+
+    this.taskService.refreshTask$.subscribe(() => {
+      this.getTasks();
     });
   }
 
+  getTasks() {
+    this.taskService.getTask().subscribe((data) => {
+      this.tasks = data;
+      console.log('data :>> ', data);
+    });
+  }
 
   onPageChanged(page: number) {
     this.currentPage = page;
