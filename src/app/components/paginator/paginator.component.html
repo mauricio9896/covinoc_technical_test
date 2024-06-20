@@ -1,18 +1,14 @@
 <div class="paginator">
-  <button
-    class="paginator-button"
-    [disabled]="currentPage === 1"
-    (click)="onPageChange(currentPage - 1)">
+  <button class="paginator-button" [disabled]="currentPage === 1" (click)="onPageChange(currentPage - 1)">
     <i class="fa-solid fa-chevron-left"></i>
   </button>
 
 
-  <span class="paginator-info">Página {{ currentPage }} de {{ totalPages }}</span>
+  <div class="paginator-item" *ngFor="let item of createArray; let i = index" [ngClass]="{'active': i + 1 === currentPage}">
+    {{ i + 1 }}
+  </div>
 
-  <button
-    class="paginator-button"
-    [disabled]="currentPage === totalPages"
-    (click)="onPageChange(currentPage + 1)">
+  <button class="paginator-button" [disabled]="currentPage === totalPages" (click)="onPageChange(currentPage + 1)">
     <i class="fa-solid fa-chevron-right"></i>
   </button>
 </div>

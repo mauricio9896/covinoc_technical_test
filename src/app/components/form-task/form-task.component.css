@@ -1,6 +1,6 @@
 .container {
   padding: 25px 0px;
-  background: #01ceb6 0% 0% no-repeat padding-box;
+  background: #01ceb6;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -74,7 +74,7 @@
   border: none;
   border-radius: 20px;
   cursor: pointer;
-  font-size: 12px;
+  font-size: 10px;
   letter-spacing: 1.1px;
   height: 40px;
   color: #000000de;

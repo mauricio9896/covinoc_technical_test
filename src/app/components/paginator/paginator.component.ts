@@ -13,7 +13,11 @@ export class PaginatorComponent {
   @Output() pageChanged = new EventEmitter<number>()
 
   get totalPages(): number{
-    return Math.ceil(this.totalItems / this.pageSize);
+    return Math.ceil(this.totalItems / this.pageSize) || 1;
+  }
+
+  get createArray (): number[] {
+    return new Array(this.totalPages);
   }
 
 
