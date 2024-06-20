@@ -13,7 +13,7 @@
     </div>
   </div>
 
-  <div class="list-task" >
+  <div class="list-task">
     <table>
       <thead>
         <tr>
@@ -31,7 +31,7 @@
             <input type="checkbox" [checked]="task.state">
           </td>
           <td>
-            <i class="fa-regular fa-trash-can"></i>
+            <i class="fa-regular fa-trash-can" (click)="deleteTask(task.id)"></i>
           </td>
         </tr>
       </tbody>
@@ -39,11 +39,8 @@
   </div>
 
   <div class="footer">
-    <app-paginator
-    [pageSize]="pageSize"
-    [currentPage]="currentPage"
-    [totalItems]="tasks.length"
-    (pageChanged)="onPageChanged($event)">
-  </app-paginator>
+    <app-paginator [pageSize]="pageSize" [currentPage]="currentPage" [totalItems]="tasks.length"
+      (pageChanged)="onPageChanged($event)">
+    </app-paginator>
   </div>
 </div>

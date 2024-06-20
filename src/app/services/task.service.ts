@@ -24,8 +24,12 @@ export class TaskService {
     return this.http.get<taskModel[]>(this.url);
   }
 
-  createTask(task: taskModel): Observable<any> {
+  createTask(task: taskModel): Observable<taskModel> {
     return this.http.post<taskModel>(this.url, task).pipe(tap(() => this._refreshTask$.next()));;
+  }
+
+  deleteTask(id: string): Observable<taskModel> {
+    return this.http.delete<taskModel>(`${this.url}/${id}`).pipe(tap(() => this._refreshTask$.next()));;
   }
 
   successAlert(title: string): void {

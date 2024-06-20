@@ -21,7 +21,6 @@ export class ListTaskComponent implements OnInit {
 
   ngOnInit(): void {
     this.getTasks();
-
     this.taskService.refreshTask$.subscribe(() => {
       this.getTasks();
     });
@@ -36,5 +35,15 @@ export class ListTaskComponent implements OnInit {
 
   onPageChanged(page: number) {
     this.currentPage = page;
+  }
+
+  deleteTask(id: string) {
+    this.taskService.deleteTask(id).subscribe((res) => {
+      if (res) {
+        this.taskService.successAlert('Tarea eliminada con éxito!');
+      }else{
+        return this.taskService.errorAlert('Hubo un error al aliminar la tarea!');
+      }
+    });
   }
 }
