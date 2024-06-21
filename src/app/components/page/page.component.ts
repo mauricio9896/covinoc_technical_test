@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PageComponent implements OnInit {
 
+  url : string = "https://github.com/mauricio9896/covinoc_technical_test/tree/master";
+
   constructor() { }
 
   ngOnInit(): void {
