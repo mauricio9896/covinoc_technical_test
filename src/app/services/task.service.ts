@@ -32,6 +32,10 @@ export class TaskService {
     return this.http.delete<taskModel>(`${this.url}/${id}`).pipe(tap(() => this._refreshTask$.next()));;
   }
 
+  updateTask(task: taskModel): Observable<taskModel> {
+    return this.http.put<taskModel>(`${this.url}/${task.id}`, task).pipe(tap(() => this._refreshTask$.next()));;
+  }
+
   successAlert(title: string): void {
     Swal.fire({
       icon: "success",

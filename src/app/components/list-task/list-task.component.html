@@ -1,6 +1,6 @@
 <div class="container">
   <div class="header">
-    <div class="title">
+    <div class="title-list">
       <i class="fa-solid fa-list-check"></i>
       <span>Lista de tareas</span>
     </div>
@@ -36,9 +36,13 @@
         <ng-template #table>
           <tr class="animate__animated animate__fadeIn" *ngFor="let task of (tasks | filterTask: searchValue: currentPage).tasks">
             <td>{{task.id}}</td>
-            <td class="title" [ngClass]="{'actived' : task.state }">{{ task.title}}</td>
+            <td class="title">
+              <input type="text" [(ngModel)]="task.title" (keyup)="onChangeInput( task )" [ngClass]="{'actived' : task.state }">
+            </td>
             <td>
-              <input type="checkbox" [checked]="task.state">
+              <input type="checkbox" [checked]="task.state"
+              [(ngModel)]="task.state"
+              (change)="updateTask(task)">
             </td>
             <td>
               <i class="fa-regular fa-trash-can" (click)="deleteTask(task.id)"></i>

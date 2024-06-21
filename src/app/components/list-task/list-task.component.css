@@ -10,7 +10,7 @@
   padding: 15px 0px;
 }
 
-.header .title {
+.header .title-list {
   color: var(--mi-color);
   font-size: 20px;
   i{
@@ -93,6 +93,13 @@
   text-decoration: line-through;
 }
 
+.title input[type="text"]  {
+  padding: 8px 40px 8px 20px;
+  border: none;
+  width: 100%;
+  text-align: center;
+  opacity: 0.7;
+}
 
 @media (max-width: 1020px) {
   .container{

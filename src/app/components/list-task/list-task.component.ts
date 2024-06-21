@@ -1,5 +1,7 @@
 import { taskModel } from './../../models/task.model';
 import { Component, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { TaskService } from 'src/app/services/task.service';
 
 @Component({
@@ -12,6 +14,7 @@ export class ListTaskComponent implements OnInit {
   public pageSize: number = 5;
   public currentPage: number = 1;
   public searchValue: string = '';
+  private searchTermSubject = new Subject<taskModel>();
 
   constructor(private taskService: TaskService) {}
 
@@ -19,6 +22,13 @@ export class ListTaskComponent implements OnInit {
     this.getTasks();
     this.taskService.refreshTask$.subscribe(() => {
       this.getTasks();
+    });
+
+    this.searchTermSubject.pipe(
+      debounceTime(600),
+      distinctUntilChanged(),
+    ).subscribe((task) => {
+      this.updateTask(task);
     });
   }
 
@@ -46,5 +56,15 @@ export class ListTaskComponent implements OnInit {
 
   filtered(){
     this.currentPage = 1;
+  }
+
+  updateTask(task : taskModel){
+    this.taskService.updateTask(task).subscribe((res)=>{
+      this.taskService.successAlert('Tarea actualizada con éxito!');
+    })
+  }
+
+  onChangeInput( task: taskModel) {
+    this.searchTermSubject.next(task);
   }
 }
