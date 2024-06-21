@@ -1,11 +1,9 @@
 .container{
   margin-bottom: 40px;
 }
-
 .container a {
   text-decoration: none;
 }
-
 .container button{
   position: fixed;
   right: 20px;
