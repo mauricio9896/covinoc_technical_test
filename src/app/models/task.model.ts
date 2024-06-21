@@ -5,6 +5,7 @@ export interface taskModel{
   id:        string;
   email?:    string;
   password?: string;
+  inputFocused?: boolean;
 }
 
 export interface filteredModel {

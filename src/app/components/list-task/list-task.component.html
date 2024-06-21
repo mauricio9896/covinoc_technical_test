@@ -36,8 +36,11 @@
         <ng-template #table>
           <tr class="animate__animated animate__fadeIn" *ngFor="let task of (tasks | filterTask: searchValue: currentPage).tasks">
             <td>{{task.id}}</td>
-            <td class="title">
-              <input type="text" [(ngModel)]="task.title" (keyup)="onChangeInput( task )" [ngClass]="{'actived' : task.state }">
+            <td class="title" >
+              <input type="text" [(ngModel)]="task.title" [ngClass]="{'actived' : task.state }" (focus)="onFocus( task )" (blur)="onBlur(task)">
+              <span class="input-title-i">
+                <i class="fa-solid fa-pen-to-square"*ngIf="task?.inputFocused" (click)="updateTask(task)"></i>
+              </span>
             </td>
             <td>
               <input type="checkbox" [checked]="task.state"
