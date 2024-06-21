@@ -26,6 +26,7 @@
   padding-left: 100px;
   padding-right: 100px;
   margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .form-task label {
@@ -37,6 +38,15 @@
 
 .input-task {
   width: 500px;
+  position: relative;
+}
+
+.error{
+  position: absolute;
+  bottom: -25px;
+  left: 5px;
+  color: var(--mi-color);
+  font-size: 12px;
 }
 
 .input-task input[type="text"] {
@@ -48,10 +58,15 @@
   width: 100%;
   box-sizing: border-box;
   color: white;
+  caret-color: white;
 }
 
 .input-task input::placeholder {
   color: #ffffff99;
+}
+
+.input-task input:hover {
+  cursor: pointer;
 }
 
 .input-task input:focus {

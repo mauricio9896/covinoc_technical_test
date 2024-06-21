@@ -1,4 +1,4 @@
-import { taskModel } from './../models/task.model';
+import { filteredModel, taskModel } from './../models/task.model';
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
@@ -9,8 +9,12 @@ export class SearchTaskPipe implements PipeTransform {
     value: taskModel[],
     search: string,
     currentPage: number
-  ): taskModel[] {
-    if (search === '') return this.paginatedTask(value, currentPage);
+  ): filteredModel {
+    if (search === '')
+      return {
+        tasks: this.paginatedTask(value, currentPage),
+        totalItems: value.length,
+      };
 
     let tasksFiltered: taskModel[] = [];
     value.forEach((task) => {
@@ -21,7 +25,10 @@ export class SearchTaskPipe implements PipeTransform {
         tasksFiltered.push(task);
       }
     });
-    return this.paginatedTask(tasksFiltered, 1);
+    return {
+      tasks: this.paginatedTask(tasksFiltered, currentPage),
+      totalItems: tasksFiltered.length,
+    };
   }
 
   paginatedTask(tasks: taskModel[], currentPage: number): taskModel[] {

@@ -6,9 +6,10 @@
     </div>
 
     <div class="search">
-      <input type="text" placeholder="Buscar" [(ngModel)]="searchValue">
+      <input type="text" placeholder="Buscar" [(ngModel)]="searchValue" (keyup)="filtered()">
       <span class="input-icon">
-        <i class="fas fa-search"></i>
+        <i class="fas fa-search" *ngIf="searchValue === ''"></i>
+        <i class="fa-solid fa-xmark" *ngIf="searchValue !== ''" style="cursor: pointer;" (click)="searchValue = ''"></i>
       </span>
     </div>
   </div>
@@ -24,26 +25,34 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let task of tasks | filterTask: searchValue: currentPage">
-          <td>{{task.id}}</td>
-          <td class="title" [ngClass]="{'actived' : task.state }" >{{ task.title}}</td>
-          <td>
-            <input type="checkbox" [checked]="task.state">
-          </td>
-          <td>
-            <i class="fa-regular fa-trash-can" (click)="deleteTask(task.id)"></i>
-          </td>
-        </tr>
+        <ng-container *ngIf="(tasks | filterTask: searchValue: currentPage).tasks.length === 0; else table">
+          <tr class="empty-list">
+            <td colspan="4">
+              <span>No hay tareas disponibles</span>
+            </td>
+          </tr>
+        </ng-container>
+
+        <ng-template #table>
+          <tr *ngFor="let task of (tasks | filterTask: searchValue: currentPage).tasks">
+            <td>{{task.id}}</td>
+            <td class="title" [ngClass]="{'actived' : task.state }">{{ task.title}}</td>
+            <td>
+              <input type="checkbox" [checked]="task.state">
+            </td>
+            <td>
+              <i class="fa-regular fa-trash-can" (click)="deleteTask(task.id)"></i>
+            </td>
+          </tr>
+        </ng-template>
+
       </tbody>
     </table>
   </div>
 
   <div class="footer">
-    <app-paginator
-      [pageSize]="pageSize"
-      [currentPage]="currentPage"
-      [totalItems]="tasks.length"
-      (pageChanged)="onPageChanged($event)">
+    <app-paginator [pageSize]="pageSize" [currentPage]="currentPage"
+      [totalItems]="(tasks | filterTask: searchValue: currentPage).totalItems" (pageChanged)="onPageChanged($event)">
     </app-paginator>
   </div>
 </div>

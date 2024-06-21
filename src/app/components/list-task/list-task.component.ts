@@ -43,4 +43,8 @@ export class ListTaskComponent implements OnInit {
       }
     });
   }
+
+  filtered(){
+    this.currentPage = 1;
+  }
 }

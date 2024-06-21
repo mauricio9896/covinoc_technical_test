@@ -6,8 +6,9 @@
 
   <form class="form-task" [formGroup]="taskForm">
     <div class="input-task">
-      <label for="">Título</label>
+      <label>Título *</label>
       <input type="text" placeholder="Ingrese título" formControlName="title">
+      <span class="error" *ngIf="invalid" >El campo es obligatorio</span>
     </div>
 
     <div class="input-check">

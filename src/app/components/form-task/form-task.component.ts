@@ -15,6 +15,14 @@ export class FormTaskComponent {
     state: [false, [Validators.required]],
   });
 
+  get invalid(): boolean {
+    if (
+      this.taskForm.get('title')?.invalid && this.taskForm.get('title')?.touched) {
+      return true;
+    }
+    return false;
+  }
+
   constructor(private fb: FormBuilder, private taskService: TaskService) {}
 
   submmitTask() {
@@ -25,11 +33,9 @@ export class FormTaskComponent {
       this.loading = false;
       if (res) {
         this.taskService.successAlert('Tarea creada con éxito!');
-        this.taskForm.patchValue({
-          title: null,
-          state: false,
-        });
-      }else{
+        this.taskForm.reset();
+        this.taskForm.get('state')?.patchValue(false);
+      } else {
         return this.taskService.errorAlert('Hubo un error al crear la tarea!');
       }
     });
