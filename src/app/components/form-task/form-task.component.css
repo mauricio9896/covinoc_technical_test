@@ -109,3 +109,30 @@
   color: #11806A;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
+
+
+@media (max-width: 1079px) {
+  .header{
+    padding-left: 50px;
+  }
+  .form-task {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    gap: 25px;
+    padding-left: 50px;
+    padding-right: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .input-task {
+    width: 100%;
+    position: relative;
+  }
+
+  .form-task button {
+    margin-top: 0px;
+  }
+
+}
