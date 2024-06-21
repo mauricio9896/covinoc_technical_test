@@ -26,7 +26,7 @@
       </thead>
       <tbody>
         <ng-container *ngIf="(tasks | filterTask: searchValue: currentPage).tasks.length === 0; else table">
-          <tr class="empty-list">
+          <tr class="empty-list animate__animated animate__fadeIn">
             <td colspan="4">
               <span>No hay tareas disponibles</span>
             </td>
@@ -34,7 +34,7 @@
         </ng-container>
 
         <ng-template #table>
-          <tr *ngFor="let task of (tasks | filterTask: searchValue: currentPage).tasks">
+          <tr class="animate__animated animate__fadeIn" *ngFor="let task of (tasks | filterTask: searchValue: currentPage).tasks">
             <td>{{task.id}}</td>
             <td class="title" [ngClass]="{'actived' : task.state }">{{ task.title}}</td>
             <td>
